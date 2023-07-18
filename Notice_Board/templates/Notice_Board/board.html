@@ -12,10 +12,10 @@
 <body>
 	<div class="container">
 		{% if user.is_authenticated %}
-		<a href="/accounts/logout" class="btn btn-primary ">Logout</a>
+		<a href="/Accounts/logout" class="btn btn-primary ">Logout</a>
 		{% else %}
-		<a href="/accounts/signup" class="btn btn-primary " style="margin-top: 15px;">회원가입</a>
-		<a href="/accounts/signin" class="btn btn-primary " style="margin-top: 15px;">Log in</a>
+		<a href="/Accounts/signup" class="btn btn-primary " style="margin-top: 15px;">회원가입</a>
+		<a href="/Accounts/signin" class="btn btn-primary " style="margin-top: 15px;">Log in</a>
 		{% endif %}
 
 
@@ -75,5 +75,4 @@
 		integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
 		crossorigin="anonymous"></script>
 </body>
-
 </html>

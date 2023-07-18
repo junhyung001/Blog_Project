@@ -22,7 +22,7 @@ class SignUPForm(UserCreationForm):
         widget=forms.PasswordInput(),
         help_text='Enter the smae password as before, for verification.',
     )
-    class Mata:
+    class Meta:
         model = User
         fields = ['email', 'nickname', 'password1', 'password2']
 

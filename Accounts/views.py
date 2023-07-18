@@ -9,10 +9,10 @@ def signup(request):
         form = SignUPForm()
     elif request.method == 'POST':
         form = SignUPForm(request.POST)
-        if form.is_valid():
+        if form.is_valid(): 
             form.save()
             return redirect('signin')
-    return render(request, 'accounts/signup.html',{'form': form})
+    return render(request, 'Accounts/signup.html',{'form': form})
 
 def signin(request):
     if request.method == 'GET':
@@ -21,14 +21,18 @@ def signin(request):
         form = SignInForm(request, data=request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('username')
+            print(email)
             password = form.cleaned_data.get('password')
+            print(password)
             user = authenticate(request, email=email, password=password)
+            print(user)
             if user is not None:
                 login(request, user)
                 return redirect('todo_list')
             else:
-                messages.error(request)
-    return render(request, 'accounts/signin.html', {'form':form})
+                print('응 에러 ㅋㅋ')
+                messages.error(request,"nn")
+    return render(request, 'Accounts/signin.html', {'form':form})
 
 def signout(reqest):
     logout(reqest)
