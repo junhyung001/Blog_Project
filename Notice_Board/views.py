@@ -5,39 +5,28 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def DeleteBoard(request, pk):
-    delete_todo = get_object_or_404(Board_list, pk=pk)
-    delete_todo.delete()
+    delete_board = get_object_or_404(Board_list, pk=pk)
+    delete_board.delete()
     return redirect('/board/')
 
 def CompletedBoard(request, pk):
-    todo = get_object_or_404(Board_list, pk=pk)
-    todo.complete = True
-    todo.save()
+    board = get_object_or_404(Board_list, pk=pk)
+    board.complete = True
+    board.save()
     return redirect('/board/')
 
 class BoardUpdate(UpdateView):
     model = Board_list
-    fields = ['todo', 'description', 'important']
+    fields = ['board', 'description', 'important']
 
     template_name = 'Notice_Board/board_update_form.html'
-
+    
 
 class BoardCreate(LoginRequiredMixin, CreateView):
     model = Board_list
-    fields = ['todo', 'description', 'important']
-    login_url = '/accounts/sigin/'
+    fields = ['board', 'description', 'important']
+    login_url = '/Accounts/sigin/'
 
-def Todos(request):
-    boards = Board.objects.all().order_by('pk')
-
-# Create your views here.
-def Board(request):
-    boards = Board_list.objects.all().order_by('pk')
-    return render(
-        request,
-        'Notice_Board/board.html',
-        {'board':boards},
-        )
 
 def index(request):
     board_list = Board_list.objects.all()
@@ -46,5 +35,16 @@ def index(request):
         'Notice_Board/index.html',
         {
             'board_list' : board_list,
-        }
+        },
     )
+
+def Board(request):
+    boards = Board_list.objects.all().order_by('pk')
+    
+    return render(
+        request,
+        'Notice_Board/board.html',
+        {
+            'boards': boards
+        },
+        )

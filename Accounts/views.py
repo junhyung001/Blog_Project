@@ -28,10 +28,10 @@ def signin(request):
             print(user)
             if user is not None:
                 login(request, user)
-                return redirect('todo_list')
+                return redirect('board_list')
             else:
                 print('응 에러 ㅋㅋ')
-                messages.error(request,"nn")
+                messages.error(request)
     return render(request, 'Accounts/signin.html', {'form':form})
 
 def signout(reqest):
