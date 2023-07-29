@@ -57,10 +57,10 @@
 										<td class="align-middle">
 											<span>{{ t.description }}</span>
 										</td>
-										{% if user.is_authenticated %}
+										{% if user.is_authenticated %}	
 										<td class="align-middle">
 											<h5 class="mb-0">
-												<a href="completed_board/" role="button"
+												<a href="update_board/{{t.pk}}" role="button"
 													class="badge bg-secondary" style="text-decoration-line: none;">
 													수정하기
 												</a>

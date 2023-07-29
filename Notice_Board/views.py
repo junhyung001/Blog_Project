@@ -25,7 +25,7 @@ class BoardUpdate(UpdateView):
 class BoardCreate(LoginRequiredMixin, CreateView):
     model = Board_list
     fields = ['board', 'description', 'important']
-    login_url = '/Accounts/sigin/'
+    login_url = '/Accounts/signin/'
 
 
 def index(request):
